@@ -1,3 +1,5 @@
+import Button from "./Button";
+
 const Home = () => {
   return (
     <div className="my-10 px-4 text-center sm:my-16">
@@ -5,7 +7,9 @@ const Home = () => {
         The Best Pizza <br />
         <span className="text-yellow-500">best pizza ever</span>
       </h1>
-      <h2>continue order, Danang</h2>
+      <Button to="menu" type="primary">
+        Continue Order, Danang
+      </Button>
     </div>
   );
 };
