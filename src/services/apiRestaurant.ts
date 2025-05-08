@@ -28,6 +28,15 @@ type Order = {
   priorityPrice: number;
 };
 
+type NewOrder = {
+  address: string;
+  cart: Cart[];
+  customer: string;
+  phone: string;
+  position: string;
+  priority: false;
+};
+
 export async function getMenu(): Promise<MenuItem[]> {
   const res = await fetch(`${API_URL}/menu`);
 
@@ -46,7 +55,7 @@ export async function getOrder(id: string): Promise<Order> {
   return data;
 }
 
-export async function createOrder(newOrder) {
+export async function createOrder(newOrder: NewOrder): Promise<Order> {
   try {
     const res = await fetch(`${API_URL}/order`, {
       method: "POST",
@@ -57,14 +66,17 @@ export async function createOrder(newOrder) {
     });
 
     if (!res.ok) throw Error();
-    const { data } = await res.json();
+    const { data }: { data: Order } = await res.json();
     return data;
   } catch {
     throw Error("Failed creating your order");
   }
 }
 
-export async function updateOrder(id, updateObj) {
+export async function updateOrder(
+  id: string,
+  updateObj: Record<string, string>
+) {
   try {
     const res = await fetch(`${API_URL}/order/${id}`, {
       method: "PATCH",
@@ -77,6 +89,6 @@ export async function updateOrder(id, updateObj) {
     if (!res.ok) throw Error();
     // We don't need the data, so we don't return anything
   } catch (err) {
-    throw Error("Failed updating your order");
+    throw Error(`Failed updating your order, ${err}`);
   }
 }
