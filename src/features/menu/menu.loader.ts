@@ -5,3 +5,5 @@ export async function menuLoader() {
 
   return menu;
 }
+
+export type MenuLoaderResponse = Awaited<ReturnType<typeof menuLoader>>;
