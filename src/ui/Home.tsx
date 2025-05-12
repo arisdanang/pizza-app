@@ -1,3 +1,4 @@
+import CreateUser from "../features/user/CreateUser";
 import Button from "./Button";
 
 const Home = () => {
@@ -7,9 +8,10 @@ const Home = () => {
         The Best Pizza <br />
         <span className="text-yellow-500">best pizza ever</span>
       </h1>
-      <Button to="menu" type="primary">
+      <CreateUser />
+      {/* <Button to="menu" type="primary">
         Continue Order, Danang
-      </Button>
+      </Button> */}
     </div>
   );
 };
