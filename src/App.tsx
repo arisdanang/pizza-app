@@ -4,6 +4,7 @@ import AppLayout from "./ui/AppLayout";
 import Home from "./ui/Home";
 import Menu from "./features/menu/Menu";
 import { menuLoader } from "./features/menu/menu.loader";
+import Cart from "./features/cart/Cart";
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
         path: "/menu",
         element: <Menu />,
         loader: menuLoader,
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
       },
     ],
   },
